@@ -4,12 +4,12 @@ using UnityEngine.EventSystems;
 public class PlayerClickManager : MonoBehaviour
 {
     private MoveController MoveController;
-    //private AttackController AttackController;
+    private AttackController AttackController;
 
     void Awake()
     {
         MoveController = GetComponent<MoveController>();
-        //AttackController = GetComponent<AttackController>();
+        AttackController = GetComponent<AttackController>();
     }
 
     void Update()
@@ -19,14 +19,14 @@ public class PlayerClickManager : MonoBehaviour
             Ray Ray = Camera.main.ScreenPointToRay(Input.mousePosition);
             RaycastHit hit;
 
-			/*if (Physics.Raycast(Ray, out hit, 1000f, LayerMask.GetMask("Enemy")))
+			if (Physics.Raycast(Ray, out hit, 1000f, LayerMask.GetMask("Enemy")))
             {
                 AttackController.Attack(hit.collider.gameObject);
             }
-            else */
+            else 
 			if (Physics.Raycast(Ray, out hit, 1000f, LayerMask.GetMask("Ground")))
             {                  
-                //AttackController.Stop();
+                AttackController.Stop();
                 MoveController.Move(hit.point);
             }
         }
@@ -34,7 +34,6 @@ public class PlayerClickManager : MonoBehaviour
 
     bool CanClick()
     {
-		return true;
-        //return !EventSystem.current.IsPointerOverGameObject();
+        return !EventSystem.current.IsPointerOverGameObject();
     }
 }

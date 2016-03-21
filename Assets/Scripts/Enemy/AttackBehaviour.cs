@@ -8,8 +8,8 @@ public class AttackBehaviour : AIBehaviour
     private GameObject Player;
     private float LastAttack;
 
-    //[SerializeField]
-    //private AnimationController AnimationController;
+    [SerializeField]
+    private AnimationController AnimationController;
 
     public override bool CanPerform()
     {
@@ -19,7 +19,7 @@ public class AttackBehaviour : AIBehaviour
     public override void Perform()
     {
         transform.LookAt(Player.transform, Vector3.up);
-        //AnimationController.Attack();
+        AnimationController.Attack();
         if (LastAttack + CharacterWeapons.CurrentWeapon.Speed < Time.time)
         {
             Player.GetComponent<LifeController>().Minus(CharacterWeapons);

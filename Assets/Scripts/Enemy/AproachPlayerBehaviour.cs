@@ -5,8 +5,8 @@ public class AproachPlayerBehaviour : AIBehaviour
     [SerializeField]
     private NavMeshAgent NavMeshAgent;
 
-    //[SerializeField]
-    //private AnimationController AnimationController;
+    [SerializeField]
+    private AnimationController AnimationController;
 
     public override bool CanPerform()
     {
@@ -15,7 +15,7 @@ public class AproachPlayerBehaviour : AIBehaviour
 
     public override void Perform()
     {
-        //AnimationController.Walk();
+        AnimationController.Walk();
         GameObject PlayerObject = GameObject.FindGameObjectWithTag("Player"); // to remove
         NavMeshAgent.SetDestination(PlayerObject.transform.position);
     }

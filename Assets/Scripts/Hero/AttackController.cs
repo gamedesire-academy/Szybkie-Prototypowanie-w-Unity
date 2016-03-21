@@ -7,13 +7,13 @@ public class AttackController : MonoBehaviour
     private CharacterWeapons CharacterWeapons;
     private float LastAttackTime;
 
-    //private AnimationController AnimationController;
+    private AnimationController AnimationController;
 
     void Awake()
     {
         Agent = GetComponent<NavMeshAgent>();
         CharacterWeapons = GetComponent<CharacterWeapons>();
-        //AnimationController = GetComponent<AnimationController>();
+        AnimationController = GetComponent<AnimationController>();
     }
 
     public void Attack(GameObject obj)
@@ -21,7 +21,7 @@ public class AttackController : MonoBehaviour
         Enemy = obj;
         if (CanAttack())
         {
-            //AnimationController.Attack();
+            AnimationController.Attack();
             Enemy.GetComponent<LifeController>().Minus(CharacterWeapons);
             LastAttackTime = Time.time;
         }
@@ -36,7 +36,7 @@ public class AttackController : MonoBehaviour
     {
         if (Enemy != null && !EnemyIsNear())
         {
-            //AnimationController.Walk();
+            AnimationController.Walk();
             Agent.SetDestination(Enemy.transform.position);
         }else if(Enemy != null)
         {
