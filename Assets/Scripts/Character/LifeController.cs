@@ -33,4 +33,12 @@ public class LifeController : MonoBehaviour
                 Died();
         }
     }
+
+    public float PercentLife
+    {
+        get
+        {
+            return Mathf.Clamp01(life / MaxLife);
+        }
+    }
 }

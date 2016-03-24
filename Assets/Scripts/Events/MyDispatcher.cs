@@ -28,7 +28,7 @@ public class MyDispatcher
 
     public static void Dispatch(string nameEvent, object e = null)
     {
-        if (Map.ContainsKey(nameEvent))
+        if (Map.ContainsKey(nameEvent) && Map[nameEvent] != null)
             Map[nameEvent](e);
     }
 }

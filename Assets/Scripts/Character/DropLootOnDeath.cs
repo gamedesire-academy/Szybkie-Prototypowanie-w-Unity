@@ -4,8 +4,7 @@ public class DropLootOnDeath : MonoBehaviour
 {
     private LifeController lifeController;
 
-    [SerializeField]
-    private GameObject dropPrefab = null;
+    public GameObject dropPrefab;
 
     public void Start()
     {

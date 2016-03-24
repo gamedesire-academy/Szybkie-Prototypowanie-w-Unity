@@ -17,6 +17,6 @@ public class DestroyOnDeath : MonoBehaviour
 
     private void OnDied()
     {
-        Destroy(gameObject);
+        Destroy(gameObject, 0.1f);
     }
 }
