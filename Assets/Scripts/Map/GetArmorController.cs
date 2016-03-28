@@ -26,7 +26,7 @@ public class GetArmorController : MonoBehaviour
         Armor.Defense = Random.Range(DefenseMin, DefenseMax);
 
         MyDispatcher.Dispatch(GameEvents.CHANGE_ARMORY, Armor);
-        MyDispatcher.Dispatch(GameEvents.CREATE_HIGHLIGHTER, new HighligtData(transform.position, "New armor"));
+        //MyDispatcher.Dispatch(GameEvents.CREATE_HIGHLIGHTER, new HighligtData(transform.position, "New armor"));
     }
 }
 

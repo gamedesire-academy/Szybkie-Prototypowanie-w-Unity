@@ -13,8 +13,8 @@ public class AttackBehaviour : AIBehaviour
     [SerializeField]
     private AnimationController AnimationController;
 
-    [SerializeField]
-    private AlianceController AlianceController;
+    //[SerializeField]
+    //private AlianceController AlianceController;
 
     public override bool CanPerform()
     {
@@ -34,32 +34,9 @@ public class AttackBehaviour : AIBehaviour
         }
     }
 
-    /*void OnTriggerEnter(Collider collider)
-    {
-        if (collider.tag == "Player")
-        {
-            LastAttack = Time.time;
-            Player = collider.gameObject;
-        }
-    }
-
-    void OnTriggerExit(Collider collider)
-    {
-        if (collider.tag == "Player")
-        {
-            Player = null;
-        }
-    }*/
-
     void OnTriggerEnter(Collider collider)
     {
-        if (Player != null)
-            return;
-
-        var CharacterType = collider.GetComponent<CharacterTypeController>();
-        var LifeController = collider.GetComponent<LifeController>();
-
-        if (CharacterType != null && LifeController != null && AlianceController.IsMyEnemy(CharacterType.EnemyType))
+        if (collider.tag == "Player")
         {
             LastAttack = Time.time;
             Player = collider.gameObject;
@@ -68,10 +45,33 @@ public class AttackBehaviour : AIBehaviour
 
     void OnTriggerExit(Collider collider)
     {
-        if (Player != null && collider.gameObject == Player)
+        if (collider.tag == "Player")
         {
             Player = null;
         }
     }
+
+    /*void OnTriggerEnter(Collider collider)
+{
+    if (Player != null)
+        return;
+
+    var CharacterType = collider.GetComponent<CharacterTypeController>();
+    var LifeController = collider.GetComponent<LifeController>();
+
+    if (CharacterType != null && LifeController != null && AlianceController.IsMyEnemy(CharacterType.CharacterType))
+    {
+        LastAttack = Time.time;
+        Player = collider.gameObject;
+    }
+}
+
+void OnTriggerExit(Collider collider)
+{
+    if (Player != null && collider.gameObject == Player)
+    {
+        Player = null;
+    }
+}*/
 }
 

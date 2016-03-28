@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
@@ -16,6 +17,8 @@ public class EnemySpawner : MonoBehaviour
     private float remainingCooldown;
 
     private List<GameObject> spawnedGameObjects = new List<GameObject>();
+
+    public Action<GameObject> OnCreated; 
 
     public void Start()
     {
@@ -40,6 +43,9 @@ public class EnemySpawner : MonoBehaviour
                     spawnedGameObject.transform.position = this.transform.position;
                     spawnedGameObjects.Add(spawnedGameObject);
                     remainingCooldown = cooldown;
+
+                    if (OnCreated != null)
+                        OnCreated(spawnedGameObject);
                 }
             }
         }

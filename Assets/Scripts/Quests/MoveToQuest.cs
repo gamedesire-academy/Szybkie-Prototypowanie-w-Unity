@@ -34,7 +34,7 @@ public class MoveToQuest : QuestBase
         return String.Format("Move to\nDistance: {0:N2}", Vector3.Distance(transform.position, Player.position));
     }
 
-    public void OnTriggerEnter(Collider other)
+    public void OnTriggerStay(Collider other)
     {
         if (IsActive)
         {

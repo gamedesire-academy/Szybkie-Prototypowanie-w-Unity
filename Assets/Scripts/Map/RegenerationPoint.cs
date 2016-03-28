@@ -2,20 +2,17 @@
 
 public class RegenerationPoint : MonoBehaviour
 {
-    private CharacterTypeController typeController;
+    [SerializeField]
+    private CharacterType type;
 
-    void Awake()
-    {
-        typeController = GetComponent<CharacterTypeController>();
-    }
-
-    void OnTriggerEnter(Collider collider)
+    void OnTriggerStay(Collider collider)
     {
         var characterType = collider.gameObject.GetComponent<CharacterTypeController>();
+        var lifeController = collider.gameObject.GetComponent<LifeController>();
 
-        if (characterType != null && characterType.EnemyType == typeController.EnemyType)
+        if (characterType != null && lifeController != null && characterType.CharacterType == type)
         {
-            collider.gameObject.GetComponent<LifeController>().Heal();
+            lifeController.Heal();
         }
     }
 }

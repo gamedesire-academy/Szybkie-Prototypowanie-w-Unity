@@ -1,5 +1,4 @@
 ﻿using System.Collections.Generic;
-using System.Linq;
 using UnityEngine;
 
 public class CanGroupMoveToBehaviour : AIBehaviour
@@ -7,7 +6,7 @@ public class CanGroupMoveToBehaviour : AIBehaviour
     [SerializeField]
     private AlianceController AlianceController;
     [SerializeField]
-    private int NumberOfAllies = 1;
+    private int NumberOfAllies = 5;
     [SerializeField]
     private int Cooldown = 15;
     [SerializeField]
@@ -16,15 +15,29 @@ public class CanGroupMoveToBehaviour : AIBehaviour
     private List<GameObject> Allies = new List<GameObject>();
 
     private float lastUseTime;
-
+    private SphereCollider sphereCollider;
+    
     void Awake()
     {
         lastUseTime = Time.time;
+        sphereCollider = GetComponent<SphereCollider>();
     }
 
     public override bool CanPerform()
     {
-        Allies = Allies.Where((x) => x != null).ToList();
+        Allies.Clear();
+        var colliders = Physics.OverlapSphere(transform.position, sphereCollider.radius);
+        foreach (var collided in colliders)
+        {
+            var CharacterType = collided.GetComponent<CharacterTypeController>();
+            var LifeController = collided.GetComponent<LifeController>();
+
+            if (CharacterType != null && LifeController != null && AlianceController.IsMyFriend(CharacterType.CharacterType))
+            {
+                Allies.Add(collided.gameObject);
+            }
+        }
+
         return lastUseTime + Cooldown < Time.time && Allies.Count > NumberOfAllies;
     }
 
@@ -43,31 +56,8 @@ public class CanGroupMoveToBehaviour : AIBehaviour
             var patrol = obj.GetComponentInChildren<PatrolBehaviour>();
             if(patrol != null)
             {
-                Debug.Log("QWEASD");
                 patrol.StartPosition = destination;
             }
-        }
-    }
-
-    public void OnTriggerEnter(Collider other)
-    {
-        if (!Allies.Contains(other.gameObject))
-        {
-            var CharacterType = other.GetComponent<CharacterTypeController>();
-            var LifeController = other.GetComponent<LifeController>();
-
-            if (CharacterType != null && LifeController != null && AlianceController.IsMyFriend(CharacterType.EnemyType))
-            {
-                Allies.Add(other.gameObject);
-            }
-        }
-    }
-
-    public void OnTriggerExit(Collider other)
-    {
-        if (Allies.Contains(other.gameObject))
-        {
-            Allies.Remove(other.gameObject);
         }
     }
 }

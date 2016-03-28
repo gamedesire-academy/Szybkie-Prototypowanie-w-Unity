@@ -6,8 +6,8 @@ public class AproachSeenEnemy : AIBehaviour
     private NavMeshAgent NavMeshAgent;
     [SerializeField]
     private AnimationController AnimationController;
-    [SerializeField]
-    private AlianceController AlianceController;
+    //[SerializeField]
+    //private AlianceController AlianceController;
 
     private GameObject Player;
 
@@ -22,23 +22,23 @@ public class AproachSeenEnemy : AIBehaviour
         NavMeshAgent.SetDestination(Player.transform.position);
     }
 
-    /*void OnTriggerEnter(Collider collider)
-   {
-       if (collider.tag == "Player")
-       {
-           Player = collider.gameObject;
-       }
-   }
-
-   void OnTriggerExit(Collider collider)
-   {
-       if (collider.tag == "Player")
-       {
-           Player = null;
-       }
-   }*/
-
     void OnTriggerEnter(Collider collider)
+    {
+        if (collider.tag == "Player")
+        {
+            Player = collider.gameObject;
+        }
+    }
+
+    void OnTriggerExit(Collider collider)
+    {
+        if (collider.tag == "Player")
+        {
+            Player = null;
+        }
+    }
+
+    /*void OnTriggerEnter(Collider collider)
     {
         if (Player != null)
             return;
@@ -46,7 +46,7 @@ public class AproachSeenEnemy : AIBehaviour
         var CharacterType = collider.GetComponent<CharacterTypeController>();
         var LifeController = collider.GetComponent<LifeController>();
 
-        if (CharacterType != null && LifeController != null && AlianceController.IsMyEnemy(CharacterType.EnemyType))
+        if (CharacterType != null && LifeController != null && AlianceController.IsMyEnemy(CharacterType.CharacterType))
         {
             Player = collider.gameObject;
         }
@@ -58,6 +58,6 @@ public class AproachSeenEnemy : AIBehaviour
         {
             Player = null;
         }
-    }
+    }*/
 }
 

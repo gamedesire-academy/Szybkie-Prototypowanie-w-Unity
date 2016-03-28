@@ -5,9 +5,9 @@ public class TextHighlighterController : MonoBehaviour
     [SerializeField]
     private TextMesh TextMesh;
     [SerializeField]
-    private float AnimationTime = 1f;
+    private float AnimationTime = 2f;
     [SerializeField]
-    private Vector3 AnimationEndPositon = new Vector3(0f, 2f, 0f);
+    private Vector3 AnimationEndPositon = new Vector3(0f, 4f, 0f);
 
     private float actualTime;
     private Color color;

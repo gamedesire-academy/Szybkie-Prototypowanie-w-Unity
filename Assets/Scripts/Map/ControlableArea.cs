@@ -1,5 +1,4 @@
-﻿using System.Linq;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class ControlableArea : MonoBehaviour
 {
@@ -25,14 +24,14 @@ public class ControlableArea : MonoBehaviour
         var colliders = Physics.OverlapSphere(transform.position, sphereCollider.radius);
         foreach(var collided in colliders)
         {
-            AlianceController AlianceController = collided.GetComponent<AlianceController>();
-            if (AlianceController != null)
+            CharacterTypeController typeController = collided.GetComponent<CharacterTypeController>();
+            if (typeController != null)
             {
-                if (AlianceController.GetCharacterType() == CharacterType.SKELETON)
+                if (typeController.CharacterType == CharacterType.SKELETON)
                 {
                     NumberOfSkeleton++;
                 }
-                else if (AlianceController.GetCharacterType() == CharacterType.RED_SKELETON)
+                else if (typeController.CharacterType == CharacterType.RED_SKELETON)
                 {
                     NumberOfRedSkeleton++;
                 }

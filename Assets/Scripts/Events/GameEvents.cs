@@ -1,5 +1,6 @@
 ﻿public class GameEvents
 {
+    public const string END_GAME_VICTORY = "Victory";
     public const string END_GAME = "EndGame";
     public const string DRINK_POTION = "DrinkPotion";
     public const string SHOP_IS_NEAR = "ShopIsNear";
@@ -12,4 +13,6 @@
     public const string CHANGE_ARMORY = "ChangeArmory";
 
     public const string NOTIFY_KILL = "EnemyKilled";
+
+    public const string DECLARE_WAR = "Declare War!!!";
 }

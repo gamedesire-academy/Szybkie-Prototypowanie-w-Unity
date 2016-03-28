@@ -7,7 +7,7 @@ public class NotifyOnDeath : MonoBehaviour
 
     public void Start()
     {
-        CharacterType = GetComponent<CharacterTypeController>().EnemyType;
+        CharacterType = GetComponent<CharacterTypeController>().CharacterType;
 
         lifeController = GetComponent<LifeController>();
         lifeController.Died += NotifyKill;

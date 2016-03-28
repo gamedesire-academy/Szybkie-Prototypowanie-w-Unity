@@ -31,7 +31,7 @@ public class GetWeaponController : MonoBehaviour
         Weapon.Speed = Random.Range(SpeedMin, SpeedMax);
 
         MyDispatcher.Dispatch(GameEvents.CHANGE_WEAPON, Weapon);
-        MyDispatcher.Dispatch(GameEvents.CREATE_HIGHLIGHTER, new HighligtData(transform.position, "New weapon"));
+        //MyDispatcher.Dispatch(GameEvents.CREATE_HIGHLIGHTER, new HighligtData(transform.position, "New weapon"));
     }
 }
 

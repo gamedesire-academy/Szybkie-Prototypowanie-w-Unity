@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 
 public class KillBossQuest : QuestBase
 {
@@ -30,6 +31,6 @@ public class KillBossQuest : QuestBase
 
     public override string EndConditions()
     {
-        return "Kill\nDistance: " + Vector3.Distance(transform.position, Player.position);
+        return String.Format("Kill\nDistance: {0:N2}", Vector3.Distance(transform.position, Player.position));
     }
 }

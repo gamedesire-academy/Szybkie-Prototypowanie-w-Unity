@@ -28,7 +28,7 @@ public class RetreatBehaviour : AIBehaviour
     {
         NavMeshAgent.SetDestination(RetreatPosition);
 
-        if (NavMeshAgent.hasPath && NavMeshAgent.remainingDistance <= .5f && !NavMeshAgent.pathPending)
+        if (NavMeshAgent.remainingDistance <= 2)
         {
             AnimationController.Idle();
         }else

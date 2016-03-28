@@ -2,27 +2,15 @@
 
 public class GetMoneyController : MonoBehaviour
 {
-    private LootDropController LootDropController;
+    public int Amount = 100;
 
-    public int AmountMin = 100;
-    public int AmountMax = 100;
-
-    public void Awake()
+    public void OnTriggerEnter(Collider other)
     {
-        LootDropController = GetComponent<LootDropController>();
-        LootDropController.LootCollected += Action;
+        if (other.tag == "Player")
+        {
+            MyDispatcher.Dispatch(GameEvents.CHANGE_MONEY, Amount);
+            Destroy(gameObject);
+        }
     }
 
-    public void OnDestroy()
-    {
-        LootDropController.LootCollected -= Action;
-    }
-
-    private void Action()
-    {
-        int Amount = Random.Range(AmountMin, AmountMax);
-
-        MyDispatcher.Dispatch(GameEvents.CHANGE_MONEY, Amount);
-        MyDispatcher.Dispatch(GameEvents.CREATE_HIGHLIGHTER, new HighligtData(transform.position, "Money +" + Amount));
-    }
 }
