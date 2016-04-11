@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
 
-public class CanGroupMoveToBehaviour : AIBehaviour
+public class CanGroupMoveToBehaviour: AIBehaviour
 {
     [SerializeField]
     private AlianceController AlianceController;

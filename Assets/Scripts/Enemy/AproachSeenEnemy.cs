@@ -6,8 +6,8 @@ public class AproachSeenEnemy : AIBehaviour
     private NavMeshAgent NavMeshAgent;
     [SerializeField]
     private AnimationController AnimationController;
-    //[SerializeField]
-    //private AlianceController AlianceController;
+    [SerializeField]
+    private AlianceController AlianceController;
 
     private GameObject Player;
 
@@ -23,22 +23,6 @@ public class AproachSeenEnemy : AIBehaviour
     }
 
     void OnTriggerEnter(Collider collider)
-    {
-        if (collider.tag == "Player")
-        {
-            Player = collider.gameObject;
-        }
-    }
-
-    void OnTriggerExit(Collider collider)
-    {
-        if (collider.tag == "Player")
-        {
-            Player = null;
-        }
-    }
-
-    /*void OnTriggerEnter(Collider collider)
     {
         if (Player != null)
             return;
@@ -58,6 +42,6 @@ public class AproachSeenEnemy : AIBehaviour
         {
             Player = null;
         }
-    }*/
+    }
 }
 

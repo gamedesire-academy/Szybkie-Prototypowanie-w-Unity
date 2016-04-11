@@ -22,6 +22,6 @@ public class RandomGetMoneyController : MonoBehaviour
     {
         int Amount = Random.Range(AmountMin, AmountMax);
         MyDispatcher.Dispatch(GameEvents.CHANGE_MONEY, Amount);
-        //MyDispatcher.Dispatch(GameEvents.CREATE_HIGHLIGHTER, new HighligtData(transform.position, "Money +" + Amount));
+        MyDispatcher.Dispatch(GameEvents.CREATE_HIGHLIGHTER, new HighligtData(transform.position, "Money +" + Amount));
     }
 }

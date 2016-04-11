@@ -16,6 +16,6 @@ public class WeaponDisplay : MonoBehaviour
 
     void Update()
     {
-        Text.text = String.Format("Power: {0:N2} Speed: {1:N2} Defense: {2:N2}", CharacterWeapons.CurrentWeapon.Power, CharacterWeapons.CurrentWeapon.Speed, CharacterWeapons.CurrentArmor.Defense);
+		Text.text = String.Format("Power: {0:N2} Speed: {1:N2} Defense: {2:N2}", CharacterWeapons.CurrentWeapon.Power, CharacterWeapons.CurrentWeapon.Speed, CharacterWeapons.CurrentArmor.Defense);
     }
 }
